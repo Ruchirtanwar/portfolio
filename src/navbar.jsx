@@ -1,46 +1,105 @@
 // components/Navbar.jsx
-import React from "react";
-import resumePDF from "../src/assets/resume.pdf"; // adjust path if needed
+import React, { useState } from "react";
+import resumePDF from "./assets/resume.pdf"; // ✅ fixed path (no ../src)
 
 const Navbar = () => {
-  return (
-    <nav className="bg-[#0a0a0a] text-white py-4 px-8 flex justify-between items-center shadow-md">
-      <div className="text-2xl font-bold">Portfolio</div>
+  const [isOpen, setIsOpen] = useState(false);
 
-      <ul className="flex gap-10 items-center text-sm font-semibold">
-        <li>
-          <a
-            href="#aboutme"
-            className="transition-colors duration-300 ease-in-out hover:text-gray-400"
-          >
-            About me
-          </a>
-        </li>
-        <li>
-          <a
-            href="#Skills"
-            className="transition-colors duration-300 ease-in-out hover:text-gray-400"
-          >
-            Skills
-          </a>
-        </li>
-        <li>
-          <a
-           href={resumePDF}
-            download="Ruchir_Tanwarresume.pdf"
-            className="transition-colors duration-300 ease-in-out hover:text-gray-400"
-          >
-            Portfolio
-          </a>
-        </li>
-        <li>
-          <a href="#contactme">
-            <button className="bg-white text-black px-5 py-2 rounded-full font-bold hover:bg-gray-200 transition-colors duration-300">
-              CONTACT ME
-            </button>
-          </a>
-        </li>
-      </ul>
+  return (
+    <nav className="bg-[#0a0a0a] text-white shadow-md">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-2xl font-bold">Portfolio</div>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-10 items-center text-sm font-semibold">
+          <li>
+            <a
+              href="#aboutme"
+              className="hover:text-gray-400 transition-colors duration-300"
+            >
+              About me
+            </a>
+          </li>
+          <li>
+            <a
+              href="#Skills"
+              className="hover:text-gray-400 transition-colors duration-300"
+            >
+              Skills
+            </a>
+          </li>
+          <li>
+            <a
+              href={resumePDF}
+              download="Ruchir_Tanwarresume.pdf"
+              className="hover:text-gray-400 transition-colors duration-300"
+            >
+              Portfolio
+            </a>
+          </li>
+          <li>
+            <a href="#contactme">
+              <button className="bg-white text-black px-5 py-2 rounded-full font-bold hover:bg-gray-200 transition-colors duration-300">
+                CONTACT ME
+              </button>
+            </a>
+          </li>
+        </ul>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden flex flex-col gap-[5px] focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span className="w-6 h-0.5 bg-white"></span>
+          <span className="w-6 h-0.5 bg-white"></span>
+          <span className="w-6 h-0.5 bg-white"></span>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-[#0a0a0a] border-t border-gray-800">
+          <ul className="flex flex-col gap-6 py-6 px-6 text-sm font-semibold">
+            <li>
+              <a
+                href="#aboutme"
+                onClick={() => setIsOpen(false)}
+                className="hover:text-gray-400 transition-colors duration-300"
+              >
+                About me
+              </a>
+            </li>
+            <li>
+              <a
+                href="#Skills"
+                onClick={() => setIsOpen(false)}
+                className="hover:text-gray-400 transition-colors duration-300"
+              >
+                Skills
+              </a>
+            </li>
+            <li>
+              <a
+                href={resumePDF}
+                download="Ruchir_Tanwarresume.pdf"
+                onClick={() => setIsOpen(false)}
+                className="hover:text-gray-400 transition-colors duration-300"
+              >
+                Portfolio
+              </a>
+            </li>
+            <li>
+              <a href="#contactme" onClick={() => setIsOpen(false)}>
+                <button className="bg-white text-black px-5 py-2 rounded-full font-bold hover:bg-gray-200 transition-colors duration-300 w-full">
+                  CONTACT ME
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

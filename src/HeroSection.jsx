@@ -72,23 +72,21 @@ const HeroSection = () => {
   };
   return (
     <div>
-      <section className="flex bg-[#d9d9d9]  min-h-screen">
+      <section className="flex flex-col md:flex-row bg-[#d9d9d9]  min-h-screen">
         {/* Left Side */}
         <div
-          className="w-1/2 bg-[#d9d9d9] flex flex-col justify-between p-12"
-          style={{
-            clipPath: "polygon(0 0, 120% 0, 120% 100%, 0% 100%)",
-          }}
+          className="w-full md:w-1/2 flex flex-col justify-between p-6 md:p-12"
+          
         >
           {/* Logo */}
           <div></div>
           {/* Text */}
-          <div className="mt-16">
+          <div className="mt-10 sm:mt-12 md:mt-16">
             <p className="text-xl font-medium text-gray-800">Hi, I am</p>
-            <h1 className="text-5xl font-bold text-black mt-2 uppercase">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mt-2 uppercase">
               Ruchir Tanwar
             </h1>
-            <p className="text-lg md:text-xl font-bold mb-6 ">
+            <p className="text-base sm:text-lg md:text-xl font-bold mb-6 ">
               <Typewriter
                 words={[
                   "Always learning, always building.",
@@ -106,7 +104,7 @@ const HeroSection = () => {
             </p>
 
             {/* Social Icons */}
-            <div className="flex gap-4 mt-6">
+            <div className="flex gap-4 mt-6 flex-wrap">
               <a
                 href="https://mail.google.com/mail/u/0/?ogbl#inbox"
                 className="bg-white p-2 rounded shadow hover:scale-110 transition"
@@ -132,7 +130,7 @@ const HeroSection = () => {
 
         {/* Right Side */}
         <div
-          className="w-1/2 bg-black relative flex items-end justify-center"
+          className="w-full md:w-1/2 bg-black relative flex items-end justify-center py-6 sm:py-8 md:py-0"
           style={{
             clipPath: "polygon(10% 0, 100% 0, 100% 100%, 0% 100%)",
           }}
@@ -140,7 +138,7 @@ const HeroSection = () => {
           <img
             src={ProfileImage}
             alt="Profile"
-            className="w-[60%] object-contain "
+            className="w-[80%] sm:w-[70%] md:w-[60%] object-contain"
           />
         </div>
       </section>
