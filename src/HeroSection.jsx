@@ -19,8 +19,8 @@ import mysql from "./assets/mysql.svg";
 import mongodb from "./assets/mongodb.png";
 import c from "./assets/c.svg";
 import cplus from "./assets/cplus.svg";
-import english from "./assets/english.svg";
-import spanish from "./assets/spanish.svg";
+// import english from "./assets/english.svg";
+// import spanish from "./assets/spanish.svg";
 import express from "./assets/express.svg";
 import design from "./assets/desgin.png";
 import development from "./assets/development.png"
