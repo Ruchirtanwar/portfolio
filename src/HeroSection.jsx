@@ -1,7 +1,7 @@
 // components/HeroSection.jsx
 import React, { useState } from "react";
 import { Mail, Github, Linkedin } from "lucide-react"; // or any icon library
-import ProfileImage from "../src/assets/Profile.png"; // Replace with your image
+import ProfileImage from "../src/assets/profile.png"; // Replace with your image
 import separator from "../src/assets/separatorBlack2.png";7
 import { SiMongodb, SiTypescript, SiCplusplus, SiC } from "react-icons/si";
 import { Typewriter } from "react-simple-typewriter";
