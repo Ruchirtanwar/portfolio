@@ -25,7 +25,6 @@ import express from "./assets/express.svg";
 import design from "./assets/desgin.png";
 import development from "./assets/development.png"
 import maintainance from "./assets/maintainance.png"
-import emailjs from "emailjs-com";
 
 const skills = {
   "Using Now": [
@@ -63,77 +62,23 @@ const HeroSection = () => {
     message: "",
   });
 
-  const handleChange = (e) =>{
+  const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Placeholder: send form data
     console.log("Form Submitted", form);
-    // Params for sending to YOU
-    const templateParams = {
-      name: form.name,
-      email: form.email,
-      phone: form.phone,
-      message: form.message,
-    };
-
-   
-
-    // emailjs
-    //   .send(
-    //     "YOUR_SERVICE_ID", // from EmailJS dashboard
-    //     "YOUR_TEMPLATE_ID", // from EmailJS dashboard
-    //     templateParams,
-    //     "YOUR_PUBLIC_KEY" // from EmailJS dashboard
-    //   )
-    //   .then(
-    //     (result) => {
-    //       alert("✅ Message sent successfully!");
-    //       setForm({ name: "", email: "", phone: "", message: "" });
-    //     },
-    //     (error) => {
-    //       alert("❌ Failed to send message: " + error.text);
-    //     }
-    //   );
- // 1️⃣ Send email to YOU
-    emailjs
-      .send(
-        "service_3p679oo",
-        "template_77rkyw8",
-        templateParams,
-        "Ykk0Iv_ixY2e1qHUA"
-      )
-      .then((response) => {
-        console.log("Message sent to me!", response.status, response.text);
-    // 2️⃣ Send Auto-Reply to USER
-        const autoReplyParams = {
-          name: form.name,
-          to_email: form.email,
-        };
-
-        emailjs.send(
-          "service_3p679oo",
-          "template_yh07lwn",
-          autoReplyParams,
-          "Ykk0Iv_ixY2e1qHUA"
-        );
-
-        alert("Your message has been sent successfully!");
-        setForm({ name: "", email: "", phone: "", message: "" });
-      })
-.catch((err) => {
-        console.error("FAILED...", err);
-        alert("There was an error sending your message.");
-      });
-    };
+  };
   return (
     <div>
       <section className="flex flex-col md:flex-row bg-[#d9d9d9]  min-h-screen">
         {/* Left Side */}
         <div
           className="w-full md:w-1/2 flex flex-col justify-between p-6 md:p-12"
-          
+          style={{
+            clipPath: "polygon(0 0, 120% 0, 120% 100%, 0% 100%)",
+          }}
         >
           {/* Logo */}
           <div></div>
@@ -143,7 +88,7 @@ const HeroSection = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mt-2 uppercase">
               Ruchir Tanwar
             </h1>
-            <p className="text-base sm:text-lg md:text-xl font-bold mb-6 ">
+            <p className="ttext-base sm:text-lg md:text-xl font-bold mb-6 ">
               <Typewriter
                 words={[
                   "Always learning, always building.",
@@ -161,7 +106,7 @@ const HeroSection = () => {
             </p>
 
             {/* Social Icons */}
-            <div className="flex gap-4 mt-6 flex-wrap">
+            <div className="flex gap-4 mt-6">
               <a
                 href="https://mail.google.com/mail/u/0/?ogbl#inbox"
                 className="bg-white p-2 rounded shadow hover:scale-110 transition"
@@ -187,7 +132,7 @@ const HeroSection = () => {
 
         {/* Right Side */}
         <div
-          className="w-full md:w-1/2 bg-black relative flex items-end justify-center py-6 sm:py-8 md:py-0"
+          className="w-1/2 bg-black relative flex items-end justify-center"
           style={{
             clipPath: "polygon(10% 0, 100% 0, 100% 100%, 0% 100%)",
           }}
@@ -195,7 +140,7 @@ const HeroSection = () => {
           <img
             src={ProfileImage}
             alt="Profile"
-            className="w-[80%] sm:w-[70%] md:w-[60%] object-contain"
+            className="w-[60%] object-contain "
           />
         </div>
       </section>
