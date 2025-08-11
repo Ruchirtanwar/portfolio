@@ -25,6 +25,7 @@ import express from "./assets/express.svg";
 import design from "./assets/desgin.png";
 import development from "./assets/development.png"
 import maintainance from "./assets/maintainance.png"
+import emailjs from "emailjs-com";
 
 const skills = {
   "Using Now": [
@@ -62,14 +63,70 @@ const HeroSection = () => {
     message: "",
   });
 
-  const handleChange = (e) =>
+  const handleChange = (e) =>{
     setForm({ ...form, [e.target.name]: e.target.value });
-
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // Placeholder: send form data
     console.log("Form Submitted", form);
-  };
+    // Params for sending to YOU
+    const templateParams = {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      message: form.message,
+    };
+
+   
+
+    // emailjs
+    //   .send(
+    //     "YOUR_SERVICE_ID", // from EmailJS dashboard
+    //     "YOUR_TEMPLATE_ID", // from EmailJS dashboard
+    //     templateParams,
+    //     "YOUR_PUBLIC_KEY" // from EmailJS dashboard
+    //   )
+    //   .then(
+    //     (result) => {
+    //       alert("✅ Message sent successfully!");
+    //       setForm({ name: "", email: "", phone: "", message: "" });
+    //     },
+    //     (error) => {
+    //       alert("❌ Failed to send message: " + error.text);
+    //     }
+    //   );
+ // 1️⃣ Send email to YOU
+    emailjs
+      .send(
+        "service_3p679oo",
+        "template_77rkyw8",
+        templateParams,
+        "Ykk0Iv_ixY2e1qHUA"
+      )
+      .then((response) => {
+        console.log("Message sent to me!", response.status, response.text);
+    // 2️⃣ Send Auto-Reply to USER
+        const autoReplyParams = {
+          name: form.name,
+          to_email: form.email,
+        };
+
+        emailjs.send(
+          "service_3p679oo",
+          "template_yh07lwn",
+          autoReplyParams,
+          "Ykk0Iv_ixY2e1qHUA"
+        );
+
+        alert("Your message has been sent successfully!");
+        setForm({ name: "", email: "", phone: "", message: "" });
+      })
+.catch((err) => {
+        console.error("FAILED...", err);
+        alert("There was an error sending your message.");
+      });
+    };
   return (
     <div>
       <section className="flex flex-col md:flex-row bg-[#d9d9d9]  min-h-screen">
