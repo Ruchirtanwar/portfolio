@@ -32,7 +32,7 @@ const Navbar = () => {
           <li>
             <a
               href={resumePDF}
-              download="Ruchir_Tanwar resume.pdf"
+              download="Ruchir_Tanwarresume"
               className="hover:text-gray-400 transition-colors duration-300"
             >
               Portfolio
