@@ -1,6 +1,6 @@
 // components/Navbar.jsx
 import React, { useState } from "react";
-import resumePDF from "./assets/resume.pdf"; // ✅ fixed path (no ../src)
+import resumePDF from "./assets/resume.pdf"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +32,7 @@ const Navbar = () => {
           <li>
             <a
               href={resumePDF}
-              download="Ruchir_Tanwarresume.pdf"
+              download="Ruchir_Tanwar resume.pdf"
               className="hover:text-gray-400 transition-colors duration-300"
             >
               Portfolio
