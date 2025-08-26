@@ -132,7 +132,7 @@ const HeroSection = () => {
 
         {/* Right Side */}
         <div
-          className="w-1/2 bg-black relative flex items-end justify-center"
+          className="w-1/2 md:w-full  bg-black relative flex items-end justify-center"
           style={{
             clipPath: "polygon(10% 0, 100% 0, 100% 100%, 0% 100%)",
           }}
